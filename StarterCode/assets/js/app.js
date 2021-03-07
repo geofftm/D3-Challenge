@@ -27,18 +27,18 @@ d3.csv("assets/data/data.csv").then(function(healthData) {
     // Step 1: Parse Data/Cast as numbers
     // ==============================
     healthData.forEach(function(data) {
-      data.poverty = +data.poverty;
-      data.healthcare = +data.healthcare;
+      data.age = +data.age;
+      data.smokes = +data.smokes;
     });
 
     // Step 2: Create scale functions
     // ==============================
     var xLinearScale = d3.scaleLinear()
-      .domain([20, d3.max(healthData, d => d.poverty)])
+      .domain([20, d3.max(healthData, d => d.age)])
       .range([0, width]);
 
     var yLinearScale = d3.scaleLinear()
-      .domain([0, d3.max(healthData, d => d.healthcare)])
+      .domain([0, d3.max(healthData, d => d.smokes)])
       .range([height, 0]);
 
     // Step 3: Create axis functions
@@ -61,8 +61,8 @@ d3.csv("assets/data/data.csv").then(function(healthData) {
     .data(healthData)
     .enter()
     .append("circle")
-    .attr("cx", d => xLinearScale(d.poverty))
-    .attr("cy", d => yLinearScale(d.healthcare))
+    .attr("cx", d => xLinearScale(d.age))
+    .attr("cy", d => yLinearScale(d.smokes))
     .attr("r", "15")
     .attr("fill", "pink")
     .attr("opacity", ".5");
@@ -73,7 +73,7 @@ d3.csv("assets/data/data.csv").then(function(healthData) {
       .attr("class", "tooltip")
       .offset([80, -60])
       .html(function(d) {
-        return (`${d.poverty}<br>Healthcare: ${d.healthcare}`);
+        return (`${d.age}<br>Smokes: ${d.smokes}`);
       });
 
     // Step 7: Create tooltip in the chart
@@ -97,12 +97,12 @@ d3.csv("assets/data/data.csv").then(function(healthData) {
       .attr("x", 0 - (height / 2))
       .attr("dy", "1em")
       .attr("class", "axisText")
-      .text("Healthcare");
+      .text("Smokes");
 
     chartGroup.append("text")
       .attr("transform", `translate(${width / 2}, ${height + margin.top + 30})`)
       .attr("class", "axisText")
-      .text("Poverty");
+      .text("Age");
   }).catch(function(error) {
     console.log(error);
   });
