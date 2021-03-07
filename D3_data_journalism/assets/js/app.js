@@ -95,7 +95,7 @@ d3.csv("assets/data/data.csv").then(function(healthData) {
       .style("background", "rgba(0, 0, 0, 0.8)")
       .style("border-radius", "4px")
       .html(function(d) {
-        return (`State: ${d.state}<br>Median Age: ${d.age}<br>Pct. Smokers: ${d.smokes}`);
+        return (`${d.state}<br>Median Age: ${d.age}<br>Pct. Smokers: ${d.smokes}`);
       });
 
   
