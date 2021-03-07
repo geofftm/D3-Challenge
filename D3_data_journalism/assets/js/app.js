@@ -86,11 +86,19 @@ d3.csv("assets/data/data.csv").then(function(healthData) {
     var toolTip = d3.tip()
       .attr("class", "tooltip")
       .offset([80, -60])
-      .style("background-color", "white")
+      .style("padding", "6px")
+      .style("font-size", "12px")
+      .style("line-height", "1")
+      .style("color", "#fff")
+      .style("text-align", "center")
+      .style("text-transform", "capitalize")
+      .style("background", "rgba(0, 0, 0, 0.8)")
+      .style("border-radius", "4px")
       .html(function(d) {
         return (`State: ${d.state}<br>Median Age: ${d.age}<br>Pct. Smokers: ${d.smokes}`);
       });
 
+  
     // Step 7: Create tooltip in the chart
     // ==============================
     chartGroup.call(toolTip);
