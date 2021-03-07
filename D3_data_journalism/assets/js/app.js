@@ -84,7 +84,7 @@ d3.csv("assets/data/data.csv").then(function(healthData) {
       .attr("class", "tooltip")
       .offset([80, -60])
       .html(function(d) {
-        return (`State: ${d.abbr}<hl><br>Average Age: ${d.age}<hl><br>Smokes: ${d.smokes}`);
+        return (`State: ${d.abbr}<hl><br>Median Age: ${d.age}<hl><br>Smokers: %${d.smokes}`);
       });
 
     // Step 7: Create tooltip in the chart
@@ -108,7 +108,7 @@ d3.csv("assets/data/data.csv").then(function(healthData) {
       .attr("x", 0 - (height / 2))
       .attr("dy", "1em")
       .attr("class", "axisText")
-      .text("Smokes");
+      .text("Smokers (%)");
 
     chartGroup.append("text")
       .attr("transform", `translate(${width / 2}, ${height + margin.top + 30})`)
