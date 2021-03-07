@@ -64,7 +64,7 @@ d3.csv("assets/data/data.csv").then(function(healthData) {
     .attr("cx", d => xLinearScale(d.age))
     .attr("cy", d => yLinearScale(d.smokes))
     .attr("r", "15")
-    .attr("fill", "blue")
+    .classed("stateCircle", true)
     .attr("opacity", ".5");
 
     chartGroup.append("g")
@@ -75,7 +75,8 @@ d3.csv("assets/data/data.csv").then(function(healthData) {
       .text(d => d.abbr)
       .attr("x", d => xLinearScale(d.age))
       .attr("y", d => yLinearScale(d.smokes))
-      
+      .classed("stateText", true)
+
     // Step 6: Initialize tool tip
     // ==============================
     var toolTip = d3.tip()
