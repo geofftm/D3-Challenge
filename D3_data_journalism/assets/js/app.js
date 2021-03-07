@@ -34,11 +34,11 @@ d3.csv("assets/data/data.csv").then(function(healthData) {
     // Step 2: Create scale functions
     // ==============================
     var xLinearScale = d3.scaleLinear()
-      .domain([20, d3.max(healthData, d => d.age)])
+      .domain([30, d3.max(healthData, d => d.age)])
       .range([0, width]);
 
     var yLinearScale = d3.scaleLinear()
-      .domain([0, d3.max(healthData, d => d.smokes)])
+      .domain([5, d3.max(healthData, d => d.smokes)])
       .range([height, 0]);
 
     // Step 3: Create axis functions
